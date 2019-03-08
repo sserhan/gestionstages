@@ -5,6 +5,7 @@ import contrat.Filiere;
 import contrat.Niveau;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public final class Classe implements contrat.Classe {
@@ -51,5 +52,19 @@ public final class Classe implements contrat.Classe {
     @Override
     public boolean removeEtudiant(Etudiant etu) {
         return etudiants.remove(etu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(niveau, filiere, annee);
+    }
+
+    @Override
+    public String toString() {
+        return "Classe{" +
+                "niveau=" + niveau +
+                ", filiere=" + filiere +
+                ", annee='" + annee + '\'' +
+                "}\n";
     }
 }

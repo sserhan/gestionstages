@@ -1,13 +1,12 @@
 package traitement;
 
-import contrat.Stage;
+import contrat.*;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.*;
 
 /**
  * Permet de charger les fichiers contenant les donnees des etudiants et des stages.
@@ -44,6 +43,56 @@ public final class StagesIO {
      */
     public void chargerDonnees() throws IOException {
 
+        Scanner readEtu = new Scanner(etuFilePath);
+        Scanner readStages = new Scanner(stagesFilePath);
+
+        while(readStages.hasNextLine()){
+            List<String> lineStageFile = new ArrayList<>(Arrays.asList(readStages.nextLine().split("#")));
+
+            Entreprise entreprise = new model.Entreprise(lineStageFile.get(4));
+
+            Stage stage = new model.Stage(lineStageFile.get(0), lineStageFile.get(1), Competence.valueOf(lineStageFile.get(2)),
+                    Niveau.valueOf(lineStageFile.get(3)), entreprise);
+
+            stage.setStatut(Statut.valueOf(lineStageFile.get(5)));
+            stagesMap.put(stage.getIdentifiant(),stage);
+        }
+
+        while(readEtu.hasNextLine()){
+            List<String> lineEtuFile = new ArrayList<>(Arrays.asList(readEtu.nextLine().split("#")));
+
+            Etudiant etudiant = new model.Etudiant(lineEtuFile.get(0));
+
+            Classe classe = new model.Classe(Niveau.valueOf(lineEtuFile.get(1)),Filiere.valueOf(lineEtuFile.get(2)),lineEtuFile.get(3));
+            if(classesMap.containsKey(classe.hashCode()))
+                classe = classesMap.get(classe.hashCode());
+
+            Enseignant enseignant = new model.Enseignant(lineEtuFile.get(6));
+            if(enseignantsMap.containsKey(enseignant.getNom()))
+                 enseignant = enseignantsMap.get(enseignant.getNom());
+
+            for(String comp : lineEtuFile.get(4).split(","))
+                etudiant.addCompetence(Competence.valueOf(comp));
+            etudiant.setTuteur(enseignant);
+            Stage stage = stagesMap.get(lineEtuFile.get(5));
+            if(stage!=null){
+                etudiant.addStage(stage);
+                stage.setEtudiant(etudiant);
+                stagesMap.put(stage.getIdentifiant(),stage);
+
+            }
+
+            etusMap.put(etudiant.getNom(),etudiant);
+
+            enseignant.addEtudiant(etudiant);
+            enseignantsMap.put(enseignant.getNom(),enseignant);
+
+            classe.addEtudiants(etudiant);
+            classesMap.put(classe.hashCode(),classe);
+        }
+        //  0       1           2   3   4                   5
+        //S145#Web App Titan 1#WEB#L3#Entreprise WebTitan#VALIDE
+
     }
 
     /**
@@ -51,7 +100,8 @@ public final class StagesIO {
      * @return la liste des classes
      */
     public List<contrat.Classe> getClasses() {
-        return null;
+        return classesMap.values().stream()
+                .sorted(Comparator.comparing(Classe::getNiveau)).collect(Collectors.toList());
     }
 
     /**
@@ -59,7 +109,8 @@ public final class StagesIO {
      * @return la liste des enseignants
      */
     public List<contrat.Enseignant> getEnseignants(){
-        return null;
+        return enseignantsMap.values().stream()
+                .sorted(Comparator.comparing(Enseignant::getNom)).collect(Collectors.toList());
     }
 
     public Set<contrat.Entreprise> getEntreprises(){
@@ -71,7 +122,8 @@ public final class StagesIO {
      * @return la liste des étudiants
      */
     public List<contrat.Etudiant> getEtudiants(){
-        return null;
+        return etusMap.values().stream()
+                .sorted(Comparator.comparing(Etudiant::getNom)).collect(Collectors.toList());
     }
 
     /**
@@ -79,7 +131,8 @@ public final class StagesIO {
      * @return la liste des stages
      */
     public List<contrat.Stage> getStages(){
-        return null;
+        return stagesMap.values().stream()
+            .sorted(Comparator.comparing(Stage::getNiveau)).collect(Collectors.toList());
     }
 
 }

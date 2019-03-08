@@ -1,18 +1,21 @@
 package traitement;
 
 import contrat.Competence;
+import contrat.Enseignant;
 import contrat.Etudiant;
 import contrat.Stage;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public final class StagesRequetes {
 
     private final StagesIO io;
 
     public StagesRequetes(StagesIO io) {
-        this.io = null;
+        this.io = io;
     }
 
     /**
@@ -22,7 +25,9 @@ public final class StagesRequetes {
      * @return l'ensemble de ses étudiants
      */
     public Set<contrat.Etudiant> etudiantsDeLEnseignant(String nom) {
-        return null;
+        Set<Etudiant> etudiantSet = (Set<Etudiant>) io.getEtudiants();
+        etudiantSet.stream().filter(e -> e.getTuteur().getNom().equals(nom));
+        return etudiantSet;
     }
 
     /**
@@ -32,7 +37,10 @@ public final class StagesRequetes {
      * @return l'ensemble des enseignants qui encadrent des stages de cette compétence
      */
     public Set<contrat.Enseignant> enseignantEncadreCompetence(Competence comp) {
-        return null;
+        Set<Enseignant> enseignantSet = (Set<Enseignant>) io.getEnseignants();
+        return (Set<Enseignant>) enseignantSet.stream().filter(enseignant -> enseignant.getEtudiants()
+                .equals(io.getEtudiants().stream().filter(etudiant -> etudiant.getStages()
+                .equals(io.getStages().stream().filter(stage -> stage.getCompetence().equals(comp))))));
     }
 
     /**

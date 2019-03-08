@@ -30,4 +30,11 @@ public final class Enseignant implements contrat.Enseignant {
     public boolean addEtudiant(Etudiant etu) {
         return etudiants.add(etu);
     }
+
+    @Override
+    public String toString() {
+        return "Enseignant{" +
+                "nom='" + nom + '\'' +
+                "}\n";
+    }
 }
