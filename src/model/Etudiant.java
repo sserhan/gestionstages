@@ -60,6 +60,6 @@ public final class Etudiant implements contrat.Etudiant {
     public String toString() {
         return "Etudiant{" +
                 "nom='" + nom + '\'' +
-                "}\n";
+                '}';
     }
 }

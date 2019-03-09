@@ -62,6 +62,8 @@ public final class StagesIO {
             List<String> lineEtuFile = new ArrayList<>(Arrays.asList(readEtu.nextLine().split("#")));
 
             Etudiant etudiant = new model.Etudiant(lineEtuFile.get(0));
+            if(etusMap.containsKey(etudiant.getNom()))
+                etudiant = etusMap.get(etudiant.getNom());
 
             Classe classe = new model.Classe(Niveau.valueOf(lineEtuFile.get(1)),Filiere.valueOf(lineEtuFile.get(2)),lineEtuFile.get(3));
             if(classesMap.containsKey(classe.hashCode()))

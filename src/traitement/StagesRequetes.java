@@ -1,13 +1,9 @@
 package traitement;
 
-import contrat.Competence;
-import contrat.Enseignant;
-import contrat.Etudiant;
-import contrat.Stage;
+import contrat.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class StagesRequetes {
@@ -25,9 +21,9 @@ public final class StagesRequetes {
      * @return l'ensemble de ses étudiants
      */
     public Set<contrat.Etudiant> etudiantsDeLEnseignant(String nom) {
-        Set<Etudiant> etudiantSet = (Set<Etudiant>) io.getEtudiants();
-        etudiantSet.stream().filter(e -> e.getTuteur().getNom().equals(nom));
-        return etudiantSet;
+        return io.getEtudiants().stream()
+                .filter(etudiant -> etudiant.getTuteur().getNom().equals(nom))
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -37,10 +33,15 @@ public final class StagesRequetes {
      * @return l'ensemble des enseignants qui encadrent des stages de cette compétence
      */
     public Set<contrat.Enseignant> enseignantEncadreCompetence(Competence comp) {
-        Set<Enseignant> enseignantSet = (Set<Enseignant>) io.getEnseignants();
-        return (Set<Enseignant>) enseignantSet.stream().filter(enseignant -> enseignant.getEtudiants()
-                .equals(io.getEtudiants().stream().filter(etudiant -> etudiant.getStages()
-                .equals(io.getStages().stream().filter(stage -> stage.getCompetence().equals(comp))))));
+
+        return io.getEnseignants().stream().filter(enseignant -> !Collections.disjoint(enseignant.getEtudiants(),
+                io.getEtudiants().stream().filter(etudiant -> !Collections.disjoint(etudiant.getStages(),
+                        io.getStages().stream()
+                                .filter(stage -> stage.getCompetence().equals(comp))
+                                .collect(Collectors.toSet())))
+                        .collect(Collectors.toSet())))
+                .collect(Collectors.toSet());
+
     }
 
     /**
@@ -51,6 +52,12 @@ public final class StagesRequetes {
      * selon ses compétence
      */
     public Map<Etudiant, Set<Stage>> etudiantsMatchStagesNonAffectes() {
-        return null;
+        Set<Etudiant> etudiantSansStage = io.getEtudiants().stream().filter(e -> e.getStages().isEmpty()).collect(Collectors.toSet());
+        Set<Stage> stageNonAffecte = io.getStages().stream().filter(s -> s.getStatut().equals(Statut.NON_AFFECTE)).collect(Collectors.toSet());
+        Map<Etudiant,Set<Stage>> mapEtudiantStage = new HashMap<>();
+        for(Etudiant e : etudiantSansStage){
+            mapEtudiantStage.put(e,stageNonAffecte.stream().filter(stage -> e.getCompetences().contains(stage.getCompetence())).collect(Collectors.toSet()));
+        }
+        return mapEtudiantStage;
     }
 }
