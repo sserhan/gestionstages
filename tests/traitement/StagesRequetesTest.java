@@ -12,7 +12,6 @@ import static org.testng.Assert.*;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StagesRequetesTest {
@@ -48,13 +47,17 @@ public class StagesRequetesTest {
         };
     }
 
-/*    @DataProvider(name="etudiantMatchStageNonAffecteData")
+    @DataProvider(name="etudiantMatchStageNonAffecteData")
     public Object[] createEtudiantMatchStageNonAffecteData(){
         Map<Object, Object> map = new HashMap<>();
-        map.put(io.getEtudiants().get(3),io.getStages().stream().filter(s->s.getIdentifiant().matches("S267|S347|S361")).collect(Collectors.toSet()));
-        map.put(io.getEtudiants().get(4),io.getStages().stream().filter(s->s.getIdentifiant().matches("S267")).collect(Collectors.toSet()));
-        return new Object[]{map};
-    }*/
+        map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Lina SOULIER")).findFirst().get(),
+                io.getStages().stream().filter(s->s.getIdentifiant().matches("S267|S347|S361")).collect(Collectors.toSet()));
+        map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Sara MAKTOU")).findFirst().get(),
+                io.getStages().stream().filter(s->s.getIdentifiant().matches("S267")).collect(Collectors.toSet()));
+        Object [] obj = new Object[1];
+        obj[0] = map;
+        return obj;
+    }
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -79,13 +82,8 @@ public class StagesRequetesTest {
         assertEquals(requetes.enseignantEncadreCompetence(competence),enseignantSet);
     }
 
-    @Test
-    public void testEtudiantsMatchStagesNonAffectes() {
-        Map<Etudiant, Set<Stage>> map = new HashMap<>();
-        map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Lina SOULIER")).findFirst().get(),
-                io.getStages().stream().filter(s->s.getIdentifiant().matches("S267|S347|S361")).collect(Collectors.toSet()));
-        /*map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Sara MAKTOU")).findFirst().get(),
-              io.getStages().stream().filter(s->s.getIdentifiant().matches("S267")).collect(Collectors.toSet()));*/
+    @Test(dataProvider = "etudiantMatchStageNonAffecteData")
+    public void testEtudiantsMatchStagesNonAffectes(Map<Etudiant,Set<Stage>> map) {
         assertEquals(requetes.etudiantsMatchStagesNonAffectes(),map);
     }
 }

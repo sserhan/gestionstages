@@ -92,9 +92,6 @@ public final class StagesIO {
             classe.addEtudiants(etudiant);
             classesMap.put(classe.hashCode(),classe);
         }
-        //  0       1           2   3   4                   5
-        //S145#Web App Titan 1#WEB#L3#Entreprise WebTitan#VALIDE
-
     }
 
     /**

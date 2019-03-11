@@ -38,10 +38,9 @@ public final class StagesRequetes {
                 io.getEtudiants().stream().filter(etudiant -> !Collections.disjoint(etudiant.getStages(),
                         io.getStages().stream()
                                 .filter(stage -> stage.getCompetence().equals(comp))
-                                .collect(Collectors.toSet())))
+                                 .collect(Collectors.toSet())))
                         .collect(Collectors.toSet())))
                 .collect(Collectors.toSet());
-
     }
 
     /**
@@ -52,12 +51,11 @@ public final class StagesRequetes {
      * selon ses compétence
      */
     public Map<Etudiant, Set<Stage>> etudiantsMatchStagesNonAffectes() {
-        Set<Etudiant> etudiantSansStage = io.getEtudiants().stream().filter(e -> e.getStages().isEmpty()).collect(Collectors.toSet());
+        Set<Etudiant> etudiantSansStage = io.getEtudiants().stream().filter(e -> e.getStages().stream().filter(stage -> stage.getStatut().equals(Statut.EN_COURS)).collect(Collectors.toSet()).isEmpty())
+                .collect(Collectors.toSet());
         Set<Stage> stageNonAffecte = io.getStages().stream().filter(s -> s.getStatut().equals(Statut.NON_AFFECTE)).collect(Collectors.toSet());
         Map<Etudiant,Set<Stage>> mapEtudiantStage = new HashMap<>();
-        for(Etudiant e : etudiantSansStage){
-            mapEtudiantStage.put(e,stageNonAffecte.stream().filter(stage -> e.getCompetences().contains(stage.getCompetence())).collect(Collectors.toSet()));
-        }
+        etudiantSansStage.forEach(e->mapEtudiantStage.put(e,stageNonAffecte.stream().filter(stage -> e.getCompetences().contains(stage.getCompetence())).collect(Collectors.toSet())));
         return mapEtudiantStage;
     }
 }
