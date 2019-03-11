@@ -48,15 +48,15 @@ public class StagesRequetesTest {
     }
 
     @DataProvider(name="etudiantMatchStageNonAffecteData")
-    public Object[] createEtudiantMatchStageNonAffecteData(){
+    public Object[][] createEtudiantMatchStageNonAffecteData(){
         Map<Object, Object> map = new HashMap<>();
         map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Lina SOULIER")).findFirst().get(),
                 io.getStages().stream().filter(s->s.getIdentifiant().matches("S267|S347|S361")).collect(Collectors.toSet()));
         map.put(io.getEtudiants().stream().filter(e->e.getNom().equals("Sara MAKTOU")).findFirst().get(),
                 io.getStages().stream().filter(s->s.getIdentifiant().matches("S267")).collect(Collectors.toSet()));
-        Object [] obj = new Object[1];
-        obj[0] = map;
-        return obj;
+        return new Object[][] {
+                {map}
+        };
     }
 
     @BeforeClass

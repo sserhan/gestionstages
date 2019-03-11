@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b828727-2f06-497d-8b77-285df6a3c20e" name="Default Changelist" comment="remaniement rapide">
+    <list default="true" id="4b828727-2f06-497d-8b77-285df6a3c20e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traitement/StagesIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/traitement/StagesIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traitement/StagesRequetes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/traitement/StagesRequetes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,12 +19,23 @@
       </map>
     </option>
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/gestionstages_student$Main.ic" NAME="Main Coverage Results" MODIFIED="1552306474613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/gestionstages_student$StagesRequetesTest.ic" NAME="StagesRequetesTest Coverage Results" MODIFIED="1552306510595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>traitement.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="241" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traitement/StagesRequetes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="170">
               <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -36,10 +45,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/contrat/Competence.java">
+        <entry file="file://$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+            <state relative-caret-position="452">
+              <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,10 +125,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/traitement/StagesIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-245">
+            <state relative-caret-position="-259">
               <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -181,8 +193,8 @@
         <option value="$PROJECT_DIR$/testng.xml" />
         <option value="$PROJECT_DIR$/donnees/stages.txt" />
         <option value="$PROJECT_DIR$/src/traitement/StagesIO.java" />
-        <option value="$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java" />
         <option value="$PROJECT_DIR$/src/traitement/StagesRequetes.java" />
+        <option value="$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java" />
       </list>
     </option>
   </component>
@@ -326,7 +338,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552300684785" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552306577377" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="TestNG" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -359,7 +371,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.StagesRequetesTest.testEtudiantsMatchStagesNonAffectes">
+  <component name="RunManager" selected="TestNG.StagesRequetesTest">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -389,6 +401,24 @@
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StagesRequetesTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="gestionstages-student" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="traitement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="traitement" />
+      <option name="MAIN_CLASS_NAME" value="traitement.StagesRequetesTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -450,17 +480,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="&lt;default&gt;" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="gestionstages-student" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="PACKAGE" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -481,11 +500,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" />
+        <item itemvalue="TestNG.StagesRequetesTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="TestNG.StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" />
         <item itemvalue="TestNG.StagesRequetesTest.testEtudiantsDeLEnseignant" />
         <item itemvalue="TestNG.StagesRequetesTest.testEnseignantEncadreCompetence" />
-        <item itemvalue="TestNG.&lt;default&gt;" />
       </list>
     </recent_temporary>
   </component>
@@ -505,7 +524,7 @@
       <workItem from="1552157369485" duration="3663000" />
       <workItem from="1552161316398" duration="2450000" />
       <workItem from="1552241472296" duration="8722000" />
-      <workItem from="1552293505132" duration="5502000" />
+      <workItem from="1552293505132" duration="8055000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1552048738325</created>
@@ -542,19 +561,17 @@
       <option name="project" value="LOCAL" />
       <updated>1552257290278</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="TestNG with all dataProvider">
+      <created>1552300718205</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552300718205</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.10 at 23h 23m 57s.xml">
-      <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.10 at 23h 27m 52s.xml">
-      <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.10 at 23h 29m 25s.xml">
-      <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.10 at 23h 29m 43s.xml">
       <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
     </history-entry>
@@ -576,15 +593,24 @@
     <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.11 at 11h 25m 40s.xml">
       <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="StagesRequetesTest_testEtudiantsMatchStagesNonAffectes - 2019.03.11 at 11h 57m 59s.xml">
+      <configuration name="StagesRequetesTest.testEtudiantsMatchStagesNonAffectes" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="StagesRequetesTest - 2019.03.11 at 12h 57m 53s.xml">
+      <configuration name="StagesRequetesTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="StagesRequetesTest - 2019.03.11 at 13h 15m 30s.xml">
+      <configuration name="StagesRequetesTest" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43646000" />
+    <option name="totallyTimeSpent" value="46199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -610,6 +636,7 @@
       <window_info anchor="bottom" id="Version Control" order="16" />
       <window_info anchor="bottom" id="ANTLR Preview" order="17" />
       <window_info anchor="bottom" id="Messages" order="18" weight="0.32936078" />
+      <window_info active="true" anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.32995737" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -632,7 +659,8 @@
     <MESSAGE value="commit StagesRequetes Fini" />
     <MESSAGE value="Test 1 codé" />
     <MESSAGE value="TestNG Fini" />
-    <option name="LAST_COMMIT_MESSAGE" value="TestNG Fini" />
+    <MESSAGE value="TestNG with all dataProvider" />
+    <option name="LAST_COMMIT_MESSAGE" value="TestNG with all dataProvider" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Set.java">
@@ -825,16 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-755">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/contrat/Classe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -916,10 +934,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/traitement/StagesIO.java">
+    <entry file="file://$PROJECT_DIR$/tests/traitement/StagesRequetesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-245">
-          <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
+        <state relative-caret-position="452">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -928,8 +946,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/traitement/StagesRequetes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="170">
           <caret line="42" column="45" selection-start-line="42" selection-start-column="45" selection-end-line="42" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/traitement/StagesIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-259">
+          <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
